@@ -1,8 +1,8 @@
 module.exports = {
-  tailwindConfig: "./styles/tailwind.config.js",
+  tailwindConfig: "./tailwind.config.cjs",
   plugins: [
-    require.resolve("prettier-plugin-astro"),
-    require.resolve("prettier-plugin-tailwindcss"),
+    require("prettier-plugin-astro"),
+    require("prettier-plugin-tailwindcss"),
   ],
   overrides: [
     {

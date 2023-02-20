@@ -1,3 +1,17 @@
 {
-  "extends": "astro/tsconfigs/base"
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    "jsx": "preserve",
+    // Skip type checking of external libraries.
+    "skipLibCheck": true,
+    "importsNotUsedAsValues": "preserve" // fixed through linting
+  },
+  "include": [
+    "src",
+    "astro.config.mjs",
+    ".eslintrc.cjs",
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs"
+  ]
 }
