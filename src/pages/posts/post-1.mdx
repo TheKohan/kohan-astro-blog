@@ -1,0 +1,77 @@
+---
+title: "My First Blog Post"
+pubDate: 2022-07-01
+layout: "../../layouts/Layout.astro"
+description: "This is the first post of my new Astro blog."
+author: "Astro Learner"
+image:
+  url: "https://astro.build/assets/blog/astro-1-release-update/cover.jpeg"
+  alt: "The Astro logo with the word One."
+tags: ["astro", "blogging", "learning in public"]
+---
+
+# My First Blog Post
+
+Published on: 2022-07-01
+
+Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
+
+## What I've accomplished
+
+1. **Installing Astro**: First, I created a new Astro project and set up my online accounts.
+
+2. **Making Pages**: I then learned how to make pages by creating new `.astro` files and placing them in the `src/pages/` folder.
+
+3. **Making Blog Posts**: This is my first blog post! I now have Astro pages and Markdown posts!
+
+## What's next
+
+I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
+
+```jsx
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro</title>
+  </head>
+  <body class="markdown">
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/blog/">Blog</a>
+    <a href="/posts/post-1">post-1</a>
+    <a href="/posts/post-2">post-2</a>
+    <a href="/posts/post-3">post-3</a>
+    <h1>About Me</h1>
+    <h2>... and my new Astro site!</h2>
+
+    <p>
+      I am working through Astro's introductory tutorial. This is the second
+      page on my website, and it's the first one I built myself!
+    </p>
+
+    <p>
+      This site will update as I complete more of the tutorial, so keep checking
+      back and see how my journey is going!
+    </p>
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>My name is {identity.firstName}.</li>
+      <li>
+        I live in {identity.country} and I work as a {identity.occupation}.
+      </li>
+      {identity.hobbies.length >= 2 && (
+        <li>
+          Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+        </li>
+      )}
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {skills.map((skill) => (
+        <li>{skill}</li>
+      ))}
+    </ul>
+  </body>
+</html>
+```
