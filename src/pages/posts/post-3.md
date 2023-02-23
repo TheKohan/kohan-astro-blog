@@ -6,6 +6,7 @@ image:
   url: "https://astro.build/assets/blog/community-day/cover.jpg"
   alt: "The word community with a heart."
 pubDate: 2022-07-15
+layout: "../../layouts/Blog.astro"
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---
 

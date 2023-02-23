@@ -39,18 +39,9 @@ export default defineConfig({
       ],
     ],
     shikiConfig: {
-      theme: "rose-pine",
+      theme: "one-dark-pro",
       wrap: true,
     },
   },
-  integrations: [
-    tailwind({
-      config: {
-        applyBaseStyles: false,
-      },
-    }),
-    react(),
-    mdx(),
-    sitemap(),
-  ],
+  integrations: [react(), mdx(), sitemap(), tailwind()],
 });

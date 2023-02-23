@@ -6,6 +6,7 @@ image:
   url: "https://astro.build/assets/blog/astro-showcase/astro-showcase-screenshot.jpg"
   alt: "Thumbnails of websites from the Astro Showcase site."
 pubDate: 2022-07-08
+layout: "../../layouts/Blog.astro"
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
 

@@ -1,31 +1,33 @@
 ---
-const pageTitle = "Home";
+import LandingPage from "../layouts/LandingPage.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-  </head>
-  <body>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
-    <a href="/posts/post-1">post-1</a>
-    <a href="/posts/post-2">post-2</a>
-    <a href="/posts/post-3">post-3</a>
-    <h1>About Me</h1>
-    <h2>... and my new Astro site!</h2>
+<LandingPage title="Landing PAge">
+  <div class="h-6 w-6 bg-orange-100">12</div>
+  <div class="h-6 w-6 bg-orange-200">12</div>
+  <div class="h-6 w-6 bg-orange-300">12</div>
+  <div class="h-6 w-6 bg-orange-400">12</div>
+  <div class="h-6 w-6 bg-orange-500">12</div>
+  <div class="h-6 w-6 bg-orange-600">12</div>
+  <div class="h-6 w-6 bg-orange-700">12</div>
+  <div class="h-6 w-6 bg-orange-800">12</div>
+  <div class="h-6 w-6 bg-orange-900">12</div>
+  <a href="/">Home</a>
+  <a href="/about/">About</a>
+  <a href="/blog/">Blog</a>
+  <a href="/posts/post-1">post-1</a>
+  <a href="/posts/post-2">post-2</a>
+  <a href="/posts/post-3">post-3</a>
+  <h1>About Me</h1>
+  <h2>... and my new Astro site!</h2>
 
-    <p>
-      I am working through Astro's introductory tutorial. This is the second
-      page on my website, and it's the first one I built myself!
-    </p>
+  <p>
+    I am working through Astro's introductory tutorial. This is the second page
+    on my website, and it's the first one I built myself!
+  </p>
 
-    <p>
-      This site will update as I complete more of the tutorial, so keep checking
-      back and see how my journey is going!
-    </p>
-  </body>
-</html>
+  <p>
+    This site will update as I complete more of the tutorial, so keep checking
+    back and see how my journey is going!
+  </p>
+</LandingPage>
