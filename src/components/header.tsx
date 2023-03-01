@@ -1,12 +1,25 @@
 import { FC } from "react";
 
 export const Header: FC = () => {
+  const handleThemeChange = () => {
+    const html = document.documentElement;
+    const theme = html.classList.contains("dark") ? "dark" : "light";
+    const newTheme = theme === "dark" ? "light" : "dark";
+    html.classList.remove(theme === "dark" ? "dark" : "light");
+    html.classList.add(newTheme);
+  };
+
   return (
     <header className="py-4">
       <nav className="flex-col gap-12">
         <div className="flex justify-between ">
           <div>Some SVG LOGO</div>
-          <div>Toggle icon</div>
+          <button
+            className="rounded-md bg-orange-500 px-4 py-2 text-white"
+            onClick={handleThemeChange}
+          >
+            Toggle theme
+          </button>
         </div>
         <div className="flex justify-between">
           <div className="flex gap-2">
