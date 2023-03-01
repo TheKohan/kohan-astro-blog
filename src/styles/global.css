@@ -33,11 +33,11 @@
     --color-foreground: 232 221 255;
     --color-background: 15 23 41;
 
-    @apply bg-default text-orange-100;
+    @apply bg-default text-kohan-100;
   }
 
   html {
-    @apply scroll-smooth accent-primary scrollbar-thin scrollbar-track-transparent scrollbar-thumb-orange-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-orange-300;
+    @apply scroll-smooth accent-primary scrollbar-thin scrollbar-track-transparent scrollbar-thumb-kohan-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-kohan-300;
   }
 
   /* Typewriter */
@@ -107,7 +107,7 @@
   }
 
   .t3-scrollbar {
-    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-orange-300 dark:scrollbar-track-orange-200/10 dark:scrollbar-thumb-orange-300;
+    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-kohan-300 dark:scrollbar-track-kohan-200/10 dark:scrollbar-thumb-kohan-300;
   }
 
   .t3-scrollbar::-webkit-scrollbar-thumb {
@@ -147,7 +147,7 @@
 
   /* Markdown Styling */
   .markdown {
-    @apply flex w-full flex-col items-start justify-start px-4 leading-relaxed text-slate-900 selection:bg-orange-200 selection:text-orange-500 dark:text-orange-100 dark:selection:bg-orange-100 dark:selection:text-slate-900;
+    @apply flex w-full flex-col items-start justify-start px-4 leading-relaxed text-slate-900 selection:bg-kohan-200 selection:text-kohan-500 dark:text-kohan-100 dark:selection:bg-kohan-100 dark:selection:text-slate-900;
   }
   .markdown h1 {
     @apply mt-8 mb-4 text-3xl font-extrabold;
@@ -174,10 +174,10 @@
     @apply mb-0 text-sm;
   }
   .markdown a:not(.heading-link--hidden---effects) {
-    @apply text-orange-500 underline decoration-slate-500 
+    @apply text-kohan-500 underline decoration-slate-500 
           decoration-dotted underline-offset-2  
-          hover:text-orange-700 dark:text-orange-200 
-          dark:decoration-orange-200 dark:hover:text-orange-300;
+          hover:text-kohan-700 dark:text-kohan-200 
+          dark:decoration-kohan-200 dark:hover:text-kohan-300;
   }
 
   :is([dir="rtl"]) .markdown a[rel~="noreferrer"] > span {
@@ -189,15 +189,15 @@
   }
 
   .markdown .code-wrapper {
-    @apply inline rounded border border-orange-200 bg-orange-200/40 px-0.5 py-[0.5px] dark:border-orange-400/30 dark:bg-orange-400/20;
+    @apply inline rounded border border-kohan-200 bg-kohan-200/40 px-0.5 py-[0.5px] dark:border-kohan-400/30 dark:bg-kohan-400/20;
   }
 
   .markdown .remark-code-title {
-    @apply z-10 -mb-1 mt-3 w-full rounded-t-md border border-orange-300/80 bg-[#191724] px-2 py-1 font-mono text-orange-200;
+    @apply z-10 -mb-1 mt-3 w-full rounded-t-md border border-kohan-300/80 bg-[#191724] px-2 py-1 font-mono text-kohan-200;
   }
 
   .markdown pre {
-    @apply mx-auto mb-3 rounded border border-orange-300/80 p-2 pl-3 font-mono shadow-xl sm:pt-2;
+    @apply mx-auto mb-3 rounded border border-kohan-300/80 p-2 pl-3 font-mono shadow-xl sm:pt-2;
   }
 
   .markdown ol {
@@ -205,10 +205,10 @@
   }
 
   .markdown details {
-    @apply mt-2 w-full rounded-md border border-orange-300/80 bg-[#191724] px-3 transition-all duration-300 ease-in-out;
+    @apply mt-2 w-full rounded-md border border-kohan-300/80 bg-[#191724] px-3 transition-all duration-300 ease-in-out;
   }
   .markdown details[open] {
-    @apply bg-orange-200/10;
+    @apply bg-kohan-200/10;
   }
   .markdown details pre {
     @apply border-0 shadow-none;
@@ -233,6 +233,6 @@
     @apply align-top;
   }
   .markdown blockquote a {
-    @apply text-slate-900 dark:text-orange-50;
+    @apply text-slate-900 dark:text-kohan-50;
   }
 }
