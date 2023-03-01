@@ -11,8 +11,8 @@ export const Header: FC = () => {
 
   return (
     <header className="py-4">
-      <nav className="flex-col gap-12">
-        <div className="flex justify-between ">
+      <nav className="flex flex-col gap-4">
+        <div className="flex items-center justify-between">
           <div>Some SVG LOGO</div>
           <button
             className="rounded-md bg-orange-500 px-4 py-2 text-white"
@@ -21,7 +21,7 @@ export const Header: FC = () => {
             Toggle theme
           </button>
         </div>
-        <div className="flex justify-between">
+        <div className="flex items-center justify-between">
           <div className="flex gap-2">
             <a href="/posts">Posts</a>
             <a href="/">Home</a>
