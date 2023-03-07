@@ -13,7 +13,13 @@ export const Header: FC = () => {
     <header className="py-4">
       <nav className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
-          <div>Some SVG LOGO</div>
+          <div className="text-2xl font-bold text-slate-700">
+            <span>&lt;&nbsp;</span>
+            <span className="text-3xl text-slate-100">
+              kohan<span className="text-kohan-400">.</span>dev
+            </span>
+            <span>&nbsp;/&gt;</span>
+          </div>
           <button
             className="rounded-md bg-kohan-700 px-4 py-2 text-white"
             onClick={handleThemeChange}
