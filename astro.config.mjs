@@ -9,7 +9,9 @@ import rehypeExternalLinks from "rehype-external-links";
 import remarkCodeTitles from "remark-code-titles";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import image from "@astrojs/image";
 
+// https://astro.build/config
 export default defineConfig({
   site: `https://kohan.dev/`,
   markdown: {
@@ -43,5 +45,5 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [react(), mdx(), sitemap(), tailwind()],
+  integrations: [react(), mdx(), sitemap(), tailwind(), image()],
 });
