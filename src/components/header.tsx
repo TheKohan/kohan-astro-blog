@@ -7,16 +7,17 @@ export const Header: FC = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
     html.classList.remove(theme === "dark" ? "dark" : "light");
     html.classList.add(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   return (
     <header className="py-4">
       <nav className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-slate-700">
+          <div className="text-2xl font-bold text-kohan-900 dark:text-slate-700">
             <span>&lt;&nbsp;</span>
-            <span className="text-3xl text-slate-100">
-              kohan<span className="text-kohan-400">.</span>dev
+            <span className="text-3xl text-slate-900 dark:text-slate-100">
+              kohan<span className="text-kohan-400  ">.</span>dev
             </span>
             <span>&nbsp;/&gt;</span>
           </div>
