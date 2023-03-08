@@ -1,7 +1,18 @@
 ---
+import { getCollection } from "astro:content";
 import LandingPage from "@layouts/landing-page.astro";
+
+const posts = await getCollection("posts");
 ---
 
 <LandingPage title="Posts">
-  <div>123</div>
+  {
+    posts.map((post) => (
+      <article>
+        <h2>{post.data.title}</h2>
+        <p>{post.data.description}</p>
+        <a href={"/posts/" + post.slug}>LINK</a>
+      </article>
+    ))
+  }
 </LandingPage>

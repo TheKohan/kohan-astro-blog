@@ -2,10 +2,11 @@
 title: My Third Blog Post
 author: Astro Learner
 description: "I had some challenges, but asking in the community really helped!"
+isMdx: true
+publishDate: 2022-07-01
 image:
-  url: "https://astro.build/assets/blog/community-day/cover.jpg"
-  alt: "The word community with a heart."
-pubDate: 2022-07-15
+  src: "https://astro.build/assets/blog/astro-1-release-update/cover.jpeg"
+  alt: "The Astro logo with the word One."
 layout: "../../layouts/Blog.astro"
 tags: ["astro", "learning in public", "setbacks", "community"]
 ---

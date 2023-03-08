@@ -2,10 +2,11 @@
 title: My Second Blog Post
 author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"
+isMdx: true
+publishDate: 2022-07-01
 image:
-  url: "https://astro.build/assets/blog/astro-showcase/astro-showcase-screenshot.jpg"
-  alt: "Thumbnails of websites from the Astro Showcase site."
-pubDate: 2022-07-08
+  src: "https://astro.build/assets/blog/astro-1-release-update/cover.jpeg"
+  alt: "The Astro logo with the word One."
 layout: "../../layouts/Blog.astro"
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
