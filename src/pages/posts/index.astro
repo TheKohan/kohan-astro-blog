@@ -1,18 +1,58 @@
 ---
 import { getCollection } from "astro:content";
 import LandingPage from "@layouts/landing-page.astro";
+import { Image } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+import { DateTime } from "luxon";
 
 const posts = await getCollection("posts");
 ---
 
 <LandingPage title="Posts">
-  {
-    posts.map((post) => (
-      <article>
-        <h2>{post.data.title}</h2>
-        <p>{post.data.description}</p>
-        <a href={"/posts/" + post.slug}>LINK</a>
-      </article>
-    ))
-  }
+  <div class="flex flex-col gap-8">
+    {
+      posts.map((post) => (
+        <article class="flex flex-col rounded-2xl bg-slate-800 ">
+          <a
+            href={"/posts/" + post.slug}
+            class="relative h-48 cursor-pointer overflow-hidden text-center"
+          >
+            <Image
+              class:list={"rounded-2xl w-[100%] h-[100%] object-cover"}
+              width={450}
+              height={450}
+              format={"jpg"}
+              alt={post.data.image.alt}
+              src={post.data.image.src}
+            />
+          </a>
+          <div class="flex flex-1 flex-col gap-4 px-8 pb-8 pt-6">
+            <div class="text-kohan-300/80 flex gap-4 text-sm">
+              <div class="flex items-center gap-2">
+                <Icon class="text-kohan-500 h-6 w-6 shrink-0" name="calendar" />
+                <div>
+                  {DateTime.fromJSDate(post.data.publishDate).toFormat(
+                    "MMM dd, yyyy"
+                  )}
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div>
+                  <Icon class="text-kohan-500 h-6 w-6" name="author" />
+                </div>
+                <div>Author</div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <h2 class="text-2xl">
+                <a href={"/posts/" + post.slug}>{post.data.title}</a>
+              </h2>
+              <p>{post.data.description}</p>
+              <a href={"/posts/" + post.slug}>LINK</a>
+            </div>
+          </div>
+        </article>
+      ))
+    }
+  </div>
 </LandingPage>

@@ -8,7 +8,8 @@
     "importsNotUsedAsValues": "preserve", // fixed through linting
     "paths": {
       "@layouts/*": ["src/layouts/*"],
-      "@components/*": ["src/components/*"]
+      "@components/*": ["src/components/*"],
+      "@content/*": ["src/content/*"]
     }
   },
 

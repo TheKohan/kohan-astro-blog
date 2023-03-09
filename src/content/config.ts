@@ -19,4 +19,4 @@ const postsCollection = defineCollection({
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   posts: postsCollection,
-};
+} as const;
