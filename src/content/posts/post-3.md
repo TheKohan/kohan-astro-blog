@@ -3,7 +3,7 @@ title: My Third Blog Post
 author: Astro Learner
 description: "I had some challenges, but asking in the community really helped!"
 isMdx: true
-publishDate: 2022-07-01
+publishDate: 2022-07-03
 image:
   src: "https://astro.build/assets/blog/astro-1-release-update/cover.jpeg"
   alt: "The Astro logo with the word One."

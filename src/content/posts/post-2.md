@@ -3,7 +3,7 @@ title: My Second Blog Post
 author: Astro Learner
 description: "After learning some Astro, I couldn't stop!"
 isMdx: true
-publishDate: 2022-07-01
+publishDate: 2022-07-02
 image:
   src: "https://astro.build/assets/blog/astro-1-release-update/cover.jpeg"
   alt: "The Astro logo with the word One."
