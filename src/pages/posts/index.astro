@@ -11,44 +11,58 @@ const posts = (await getCollection("posts")).sort(
 ---
 
 <LandingPage title="Posts">
-  <div class="flex flex-col gap-8">
-    {
-      posts.map((post) => (
-        <article class="flex flex-col rounded-2xl bg-slate-800 ">
-          <a
-            href={"/posts/" + post.slug}
-            class="relative h-48 cursor-pointer overflow-hidden text-center"
-          >
-            <Image
-              class:list={"rounded-2xl w-[100%] h-[100%] object-cover"}
-              width={450}
-              height={450}
-              format={"jpg"}
-              alt={post.data.image.alt}
-              src={post.data.image.src}
-            />
-          </a>
-          <div class="flex flex-1 flex-col gap-4 px-8 pb-8 pt-6">
-            <div class="text-kohan-300/80 flex gap-4 text-sm">
-              <div class="flex items-center gap-2">
-                <Icon class="text-kohan-500 h-6 w-6 shrink-0" name="calendar" />
-                <div>
-                  {DateTime.fromJSDate(post.data.publishDate).toFormat(
-                    "MMM dd, yyyy"
-                  )}
+  <div class="flex gap-8">
+    <div class="flex basis-3/4 flex-col gap-8">
+      {
+        posts.map((post) => (
+          <article class="flex flex-col rounded-2xl bg-slate-800 ">
+            <a
+              href={"/posts/" + post.slug}
+              class="relative h-48 cursor-pointer overflow-hidden text-center"
+            >
+              <Image
+                class:list={"rounded-2xl w-[100%] h-[100%] object-cover"}
+                width={450}
+                height={450}
+                format={"jpg"}
+                alt={post.data.image.alt}
+                src={post.data.image.src}
+              />
+            </a>
+            <div class="flex flex-1 flex-col gap-4 px-8 pb-8 pt-6">
+              <div class="text-kohan-300/80 flex gap-4 text-sm">
+                <div class="flex items-center gap-2">
+                  <Icon
+                    class="text-kohan-500 h-6 w-6 shrink-0"
+                    name="calendar"
+                  />
+                  <div>
+                    {DateTime.fromJSDate(post.data.publishDate).toFormat(
+                      "MMM dd, yyyy"
+                    )}
+                  </div>
                 </div>
               </div>
+              <div class="flex flex-col gap-2">
+                <h2 class="dark:text-kohan-300 text-2xl">
+                  <a href={"/posts/" + post.slug}>{post.data.title}</a>
+                </h2>
+                <p>{post.data.description}</p>
+              </div>
             </div>
-            <div class="flex flex-col gap-2">
-              <h2 class="text-2xl">
-                <a href={"/posts/" + post.slug}>{post.data.title}</a>
-              </h2>
-              <p>{post.data.description}</p>
-              <a href={"/posts/" + post.slug}>LINK</a>
-            </div>
-          </div>
-        </article>
-      ))
-    }
+          </article>
+        ))
+      }
+    </div>
+    <div class="basis-1/4">
+      <h2 class="text-2xl dark:text-kohan-300">Latest articles</h2>
+      <div class="group text-pink-500 transition-all duration-300 ease-in-out">
+        <span
+          class="bg-gradient-to-r from-pink-500 to-pink-500 bg-[length:0%_2px] bg-left-bottom bg-no-repeat transition-all duration-500 ease-out group-hover:bg-[length:100%_2px]"
+        >
+          This text gets 'underlined' on hover
+        </span>
+      </div>
+    </div>
   </div>
 </LandingPage>
