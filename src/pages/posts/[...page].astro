@@ -4,8 +4,19 @@ import LandingPage from "@layouts/landing-page.astro";
 import { Image } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
 import { DateTime } from "luxon";
+import { InferGetStaticParamsType, InferGetStaticPropsType } from "astro";
 
-/**@TODO: add pagination here */
+export async function getStaticPaths({ paginate }) {
+  const posts = (await getCollection("posts")).sort(
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+  );
+  return paginate(posts, { pageSize: 5 });
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props;
 const posts = (await getCollection("posts")).sort(
   (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
 );
@@ -17,7 +28,7 @@ const latestPosts = posts.slice(0, 4);
   <div class="flex flex-col gap-8 lg:flex-row">
     <div class="flex basis-2/3 flex-col gap-8">
       {
-        posts.map((post) => (
+        page.data.map((post) => (
           <article class="flex flex-col rounded-2xl bg-slate-800 ">
             <a
               href={"/posts/" + post.slug}
