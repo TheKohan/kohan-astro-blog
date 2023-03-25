@@ -17,7 +17,7 @@ export const Header: FC = () => {
           <div className="text-2xl font-bold text-kohan-900 dark:text-slate-700">
             <span>&lt;&nbsp;</span>
             <span className="text-3xl text-slate-900 dark:text-slate-100">
-              kohan<span className="text-kohan-400  ">.</span>dev
+              kohan<span className="text-kohan-400">.</span>dev
             </span>
             <span>&nbsp;/&gt;</span>
           </div>
