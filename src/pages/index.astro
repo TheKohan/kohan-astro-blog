@@ -1,11 +1,19 @@
 ---
 import LandingPage from "@layouts/landing-page.astro";
 import { Image } from "@astrojs/image/components";
+import { getCollection } from "astro:content";
+import { DateTime } from "luxon";
+
+const postsCollection = (await getCollection("posts")).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+
+const latestPosts = postsCollection.slice(0, 6);
 ---
 
 <LandingPage title="Landing Page">
   <div
-    class="flex flex-col gap-4 rounded-2xl bg-slate-200 p-4 dark:bg-slate-800 sm:flex-row sm:p-8"
+    class="mb-8 flex flex-col gap-4 rounded-2xl bg-slate-200 p-4 dark:bg-slate-800 sm:flex-row sm:p-8"
   >
     <div class="flex flex-shrink-0 flex-grow-0 justify-center rounded-full">
       <div>
@@ -13,7 +21,7 @@ import { Image } from "@astrojs/image/components";
           alt="Profile"
           width={150}
           format={"jpeg"}
-          class="rounded-full border-4 border-kohan-300 w-24 h-24 md:w-32 md:h-32"
+          class="h-24 w-24 rounded-full border-4 border-kohan-300 md:h-32 md:w-32"
           height={150}
           src="/assets/profile-pic.jpg"
         />
@@ -31,6 +39,33 @@ import { Image } from "@astrojs/image/components";
           class="font-bold text-slate-900 dark:text-kohan-300">VirtusLab</span
         >.
       </p>
+    </div>
+  </div>
+  <div class="mb-4 flex flex-col divide-y-2 divide-kohan-600">
+    <h2 class="pb-2 text-2xl dark:text-kohan-300">Latest articles</h2>
+    <div class="grid grid-cols-3 gap-8 pt-4">
+      {
+        latestPosts.map((post) => (
+          <a class="items-top flex gap-4" href={"/posts/" + post.slug}>
+            <Image
+              class:list={"rounded-2xl w-16 h-16 object-cover"}
+              width={75}
+              height={75}
+              format={"jpg"}
+              alt={post.data.image.alt}
+              src={post.data.image.src}
+            />
+            <div class="flex flex-col gap-2">
+              <h3 class="dark:text-kohan-300 text-xl">{post.data.title}</h3>
+              <p class="dark:text-kohan-300/80 text-sm">
+                {DateTime.fromJSDate(post.data.publishDate).toFormat(
+                  "MMM dd, yyyy"
+                )}
+              </p>
+            </div>
+          </a>
+        ))
+      }
     </div>
   </div>
 </LandingPage>
