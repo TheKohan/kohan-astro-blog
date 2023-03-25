@@ -1,32 +1,22 @@
 import { FC } from "react";
+import { ToggleThemeButton } from "./toggle-theme-button";
 
 export const Header: FC = () => {
-  const handleThemeChange = () => {
-    const html = document.documentElement;
-    const theme = html.classList.contains("dark") ? "dark" : "light";
-    const newTheme = theme === "dark" ? "light" : "dark";
-    html.classList.remove(theme === "dark" ? "dark" : "light");
-    html.classList.add(newTheme);
-    localStorage.setItem("theme", newTheme);
-  };
-
   return (
     <header className="py-4">
       <nav className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-kohan-900 dark:text-slate-700">
+          <a
+            href="/"
+            className="text-2xl font-bold text-kohan-900 !no-underline dark:text-slate-700"
+          >
             <span>&lt;&nbsp;</span>
             <span className="text-3xl text-slate-900 dark:text-slate-100">
               kohan<span className="text-kohan-400">.</span>dev
             </span>
             <span>&nbsp;/&gt;</span>
-          </div>
-          <button
-            className="rounded-md bg-kohan-700 px-4 py-2 text-white"
-            onClick={handleThemeChange}
-          >
-            Toggle theme
-          </button>
+          </a>
+          <ToggleThemeButton />
         </div>
         <div className="flex items-center justify-between">
           <div className="flex gap-2">
