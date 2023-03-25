@@ -10,7 +10,7 @@ export const ToggleThemeButton = () => {
 
   return (
     <button
-      className="fill-kohan-800 dark:fill-kohan-300"
+      className="fill-kohan-800 dark:fill-kohan-500"
       onClick={handleThemeChange}
     >
       <svg

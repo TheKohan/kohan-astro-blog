@@ -21,30 +21,30 @@ const latestPosts = postsCollection.slice(0, 6);
           alt="Profile"
           width={150}
           format={"jpeg"}
-          class="h-24 w-24 rounded-full border-4 border-kohan-800 dark:border-kohan-300 md:h-32 md:w-32"
+          class="h-24 w-24 rounded-full border-4 border-kohan-800 dark:border-kohan-500 md:h-32 md:w-32"
           height={150}
           src="/assets/profile-pic.jpg"
         />
       </div>
     </div>
     <div class="flex flex-col gap-1">
-      <h1 class="text-3xl font-bold text-slate-900 dark:text-kohan-300">
+      <h1 class="text-3xl font-bold text-slate-900 dark:text-kohan-500">
         About me
       </h1>
       <p>
-        Hi my name is <span class="font-bold text-slate-900 dark:text-kohan-300"
+        Hi my name is <span class="font-bold text-slate-900 dark:text-kohan-500"
           >Piotr Kochanowski</span
         > and i'm a passionate Web developer from Poland. In love with TypeScript
         and static types. Currently working as a Frontend developer at <span
-          class="font-bold text-slate-900 dark:text-kohan-300">VirtusLab</span
+          class="font-bold text-slate-900 dark:text-kohan-500">VirtusLab</span
         >.
       </p>
     </div>
   </div>
   <div
-    class="mb-4 flex flex-col divide-y-2 divide-kohan-800 dark:divide-kohan-300"
+    class="mb-4 flex flex-col divide-y-2 divide-kohan-800 dark:divide-kohan-500"
   >
-    <h2 class="pb-2 text-2xl dark:text-kohan-300">Latest articles</h2>
+    <h2 class="pb-2 text-2xl dark:text-kohan-500">Latest articles</h2>
     <div class="grid grid-cols-3 gap-8 pt-4">
       {
         latestPosts.map((post) => (
@@ -58,7 +58,7 @@ const latestPosts = postsCollection.slice(0, 6);
               src={post.data.image.src}
             />
             <div class="flex flex-col gap-2">
-              <h3 class="dark:text-kohan-300 text-xl">{post.data.title}</h3>
+              <h3 class="dark:text-kohan-500 text-xl">{post.data.title}</h3>
               <p class="dark:text-kohan-800 text-sm">
                 {DateTime.fromJSDate(post.data.publishDate).toFormat(
                   "MMM dd, yyyy"
