@@ -9,13 +9,16 @@ export const ToggleThemeButton = () => {
   };
 
   return (
-    <button onClick={handleThemeChange}>
+    <button
+      className="fill-kohan-800 dark:fill-kohan-300"
+      onClick={handleThemeChange}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="26"
         height="26"
         viewBox="0 0 256 256"
-        className="fill-kohan-300 duration-300 ease-in-out hover:scale-125 dark:hidden "
+        className=" duration-300 ease-in-out hover:scale-125 dark:hidden"
       >
         <defs></defs>
         <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
@@ -31,7 +34,7 @@ export const ToggleThemeButton = () => {
         version="1.1"
         width="26"
         height="26"
-        className="hidden fill-kohan-300 duration-300 ease-in-out hover:scale-125 dark:block"
+        className="hidden duration-300 ease-in-out hover:scale-125 dark:block"
         viewBox="0 0 256 256"
       >
         <g transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">

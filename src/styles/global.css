@@ -33,11 +33,11 @@
     --color-foreground: 232 221 255;
     --color-background: 15 23 41;
 
-    @apply bg-default text-kohan-100;
+    @apply bg-default text-kohan-100 scrollbar-track-transparent scrollbar-thumb-kohan-300;
   }
 
   html {
-    @apply scroll-smooth accent-primary scrollbar-thin scrollbar-track-transparent scrollbar-thumb-kohan-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-kohan-300;
+    @apply scroll-smooth accent-primary scrollbar-thin scrollbar-thumb-kohan-800;
   }
 
   /* Typewriter */
@@ -104,14 +104,6 @@
   th {
     padding: 6px;
     text-align: inline-start;
-  }
-
-  .t3-scrollbar {
-    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-kohan-300 dark:scrollbar-track-kohan-200/10 dark:scrollbar-thumb-kohan-300;
-  }
-
-  .t3-scrollbar::-webkit-scrollbar-thumb {
-    @apply rounded-full;
   }
 
   .line-clamp-1 {
