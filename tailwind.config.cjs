@@ -8,6 +8,7 @@ module.exports = {
         default: "rgb(var(--color-default) / <alpha-value>)",
         neutral: "rgb(var(--color-neutral) / <alpha-value>)",
         primary: "rgb(var(--color-primary) / <alpha-value>)",
+        elevation: "rgb(var(--color-elevation) / <alpha-value>)",
         secondary: "rgb(var(--color-secondary) / <alpha-value>)",
         accent: "rgb(var(--color-accent) / <alpha-value>)",
         warning: "rgb(var(--color-warning) / <alpha-value>)",

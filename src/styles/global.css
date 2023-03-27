@@ -5,10 +5,11 @@
 @layer base {
   /* Design System Theming */
   html {
-    --color-default: 236 228 236;
+    --color-default: 221 208 218;
     --color-neutral: 29 40 58;
     --color-primary: 112 64 255;
     --color-secondary: 58 191 248;
+    --color-elevation: 249 250 251;
     --color-accent: 244 113 181;
     --color-warning: 244 193 82;
     --color-error: 251 111 132;
@@ -17,7 +18,7 @@
     --color-foreground: 15 23 42;
     --color-background: 236 228 236;
 
-    @apply bg-default text-slate-900;
+    @apply bg-gray-100 text-slate-900;
   }
 
   html.dark {
@@ -25,6 +26,7 @@
     --color-neutral: 29 40 58;
     --color-primary: 112 64 255;
     --color-secondary: 58 191 248;
+    --color-elevation: 30 41 59;
     --color-accent: 244 113 181;
     --color-warning: 244 193 82;
     --color-error: 251 111 132;

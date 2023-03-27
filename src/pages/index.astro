@@ -45,7 +45,7 @@ const latestPosts = postsCollection.slice(0, 6);
     class="mb-4 flex flex-col divide-y-2 divide-kohan-800 dark:divide-kohan-500"
   >
     <h2 class="pb-2 text-2xl dark:text-kohan-500">Latest articles</h2>
-    <div class="grid grid-cols-3 gap-8 pt-4">
+    <div class="grid grid-cols-1 gap-8 pt-4 sm:grid-cols-2 md:grid-cols-3">
       {
         latestPosts.map((post) => (
           <a class="items-top flex gap-4" href={"/posts/" + post.slug}>
