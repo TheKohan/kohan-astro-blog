@@ -1,0 +1,30 @@
+---
+import { Page } from "@models/index";
+import { CollectionEntry } from "astro:content";
+
+export interface Props {
+  page: Page<CollectionEntry<"posts">>;
+}
+
+/**
+ * TODO: temporary solution for pagination, can stay as there will be no more
+ * than 10 pages for the next 10 years. Didn't really used the page prop,
+ * as i dont like the way it forces you to have only next/prev page links.
+ */
+
+const { page } = Astro.props;
+---
+
+<div class="flex justify-center gap-2">
+  {
+    [...Array.from(Array(page.lastPage))].map((_, i) => {
+      const activeStyle = "font-bold text-kohan-500";
+      const active = page.currentPage === i + 1;
+      return (
+        <a class={active ? activeStyle : ""} href={"/posts/" + (i + 1)}>
+          {i + 1}
+        </a>
+      );
+    })
+  }
+</div>

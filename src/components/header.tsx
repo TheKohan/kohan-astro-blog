@@ -21,7 +21,7 @@ export const Header: FC = () => {
         <div className="flex items-center justify-between">
           <div className="flex gap-2">
             <a href="/">Home</a>
-            <a href="/posts">Posts</a>
+            <a href="/posts/1">Posts</a>
           </div>
 
           <div className="flex gap-2">
