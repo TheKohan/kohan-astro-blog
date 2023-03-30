@@ -20,8 +20,18 @@ export const Header: FC = () => {
         </div>
         <div className="flex items-center justify-between">
           <div className="flex gap-2">
-            <a href="/">Home</a>
-            <a href="/posts/1">Posts</a>
+            <a
+              className="rounded-full px-4 py-1 !no-underline transition-all duration-200 hover:bg-kohan-100 dark:hover:bg-kohan-800"
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              className="rounded-full px-4 py-1 !no-underline transition-all duration-200 hover:bg-kohan-100 dark:hover:bg-kohan-800"
+              href="/posts/1"
+            >
+              Posts
+            </a>
           </div>
 
           <div className="flex gap-2">
