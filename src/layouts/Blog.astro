@@ -5,7 +5,8 @@ import "../styles/global.css";
 import CommonSeo from "@components/common-seo.astro";
 import Seo from "@components/seo.astro";
 import { Frontmatter } from "@models/index";
-import { Image } from "@astrojs/image/components";
+import { Icon } from "astro-icon";
+import { DateTime } from "luxon";
 
 export interface Props {
   frontmatter: Frontmatter;
@@ -47,14 +48,31 @@ const { frontmatter } = Astro.props;
         <Header />
       </div>
       <main class="mx-auto max-w-4xl px-4 md:px-6">
-        <Image
-          alt={frontmatter?.image?.alt ?? "Blog post image"}
-          width={250}
-          format={"jpeg"}
-          class="h-24 w-24 rounded-full border-4 border-kohan-800 dark:border-kohan-500 md:h-32 md:w-32"
-          height={150}
-          src="/assets/profile-pic.jpg"
-        />
+        <div class="relative h-64 w-full overflow-hidden rounded-xl shadow-md">
+          <div class="absolute left-0 bottom-0 rounded-md bg-slate-900/20 p-2">
+            <div class="flex items-center gap-2">
+              <Icon
+                class="h-6 w-6 shrink-0 text-kohan-800 dark:text-kohan-500"
+                name="calendar"
+              />
+              <div>
+                {
+                  DateTime.fromJSDate(frontmatter.publishDate).toFormat(
+                    "MMM dd, yyyy"
+                  )
+                }
+              </div>
+            </div>
+            <div>AUTHOR</div>
+          </div>
+          <img
+            alt={frontmatter?.image?.alt ?? "Blog post image"}
+            width={900}
+            class="h-full w-full object-cover"
+            src={frontmatter?.image?.src ?? "/logo_placeholder.png"}
+          />
+        </div>
+
         <article class="markdown">
           <slot />
         </article>

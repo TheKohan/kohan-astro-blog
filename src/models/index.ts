@@ -1,11 +1,11 @@
 export type Frontmatter = {
   title: string;
   description: string;
-  layout: string;
-  image?: { src: string; alt: string };
-  isMdx?: boolean;
-  tags?: string[];
-  author?: string;
+  image: { src: string; alt: string };
+  isMdx: boolean;
+  tags: string[];
+  publishDate: Date;
+  author: string;
 };
 export type PaginatorProps = {
   /** url of the current page */
