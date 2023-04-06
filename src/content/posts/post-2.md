@@ -7,7 +7,7 @@ publishDate: 2022-06-02
 image:
   src: "https://img.freepik.com/free-photo/blogging-gone-viral-camera-concept_53876-127618.jpg?w=2000&t=st=1679335075~exp=1679335675~hmac=8179dee088b8dfd3ac8a0823d994a95185191681d85fe189736681d56f3df1b2wpnp"
   alt: "The Astro logo with the word One."
-layout: "../../layouts/Blog.astro"
+
 tags: ["astro", "blogging", "learning in public", "successes"]
 ---
 
