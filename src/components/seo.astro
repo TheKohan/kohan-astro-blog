@@ -1,0 +1,65 @@
+---
+import { Frontmatter } from "@models/index";
+
+export interface Props {
+  frontmatter?: Frontmatter;
+  type?: string;
+  title?: string;
+}
+
+const { frontmatter, type, title } = Astro.props as Props;
+
+const openGraph = {
+  type: type ?? "website",
+  locale: "en_US",
+  image: {
+    src: "images/og-image.png",
+    alt: "Create T3 App: The best way to start a full-stack, typesafe Next.js app.",
+  },
+  twitter: "t3dotgg",
+};
+
+const siteTitle = "kohan.dev";
+
+const pageTitle = title ?? frontmatter?.title;
+
+const config = {
+  canonicalUrl: new URL(Astro.url.pathname, Astro.site),
+  title: "Kohan.Dev",
+  description:
+    "Stay up-to-date on Typescript, React, and React Native with Kohan Dev. Your source for expert insights on the latest frontend and backend technologies.",
+  contentTitle: pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle,
+  imageSrc: frontmatter?.image?.src ?? openGraph.image.src,
+  imageUrl: new URL(openGraph.image.src, Astro.url.origin),
+  imageAlt: frontmatter?.image?.alt ?? openGraph.image.alt,
+  twitter: `TheKohan`,
+};
+---
+
+<!-- Page Metadata -->
+<link rel="canonical" href={config.canonicalUrl} />
+<meta
+  name="description"
+  property="og:description"
+  content={config.description}
+/>
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content={config.contentTitle} />
+<meta property="og:type" content={openGraph.type} />
+<meta property="og:url" content={config.canonicalUrl} />
+<meta property="og:locale" content={openGraph.locale} />
+<meta property="og:image" content={config.imageUrl} />
+<meta property="og:image:alt" content={config.imageAlt} />
+<meta property="og:site_name" content={config.title} />
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={config.twitter} />
+<meta name="twitter:title" content={config.contentTitle} />
+<meta name="twitter:description" content={config.description} />
+<meta name="twitter:image" content={config.imageUrl} />
+<meta name="twitter:image:alt" content={config.imageAlt} />
+
+<!-- Title -->
+<title>{config.contentTitle}</title>
