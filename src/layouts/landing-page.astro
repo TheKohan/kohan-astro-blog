@@ -1,6 +1,6 @@
 ---
-import Footer from "@components/footer.astro";
 import Header from "@components/header.astro";
+import Footer from "@components/footer.astro";
 import "../styles/global.css";
 import CommonSeo from "@components/common-seo.astro";
 import Seo from "@components/seo.astro";
@@ -41,7 +41,7 @@ const { title } = Astro.props;
   </head>
   <body>
     <div class="container mx-auto px-4 md:px-6">
-      <Header client:load />
+      <Header />
     </div>
     <main class="container mx-auto px-4 md:px-6">
       <slot />
