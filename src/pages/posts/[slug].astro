@@ -1,5 +1,5 @@
 ---
-import LandingPage from "@layouts/landing-page.astro";
+import Blog from "@layouts/blog.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -14,4 +14,4 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<LandingPage title={entry.title}><Content /></LandingPage>
+<Blog title={entry.title}><Content /></Blog>

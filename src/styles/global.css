@@ -132,7 +132,7 @@
 
   /* Markdown Styling */
   .markdown {
-    @apply flex w-full flex-col items-start justify-start px-4 leading-relaxed text-slate-900 selection:bg-kohan-200 selection:text-kohan-500 dark:text-kohan-100 dark:selection:bg-kohan-100 dark:selection:text-slate-900;
+    @apply flex w-full flex-col items-start justify-start leading-relaxed text-slate-900 selection:bg-kohan-200 selection:text-kohan-500 dark:text-kohan-100 dark:selection:bg-kohan-100 dark:selection:text-slate-900;
   }
   .markdown h1 {
     @apply mt-8 mb-4 text-3xl font-extrabold;
