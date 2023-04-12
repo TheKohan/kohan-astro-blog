@@ -6,6 +6,7 @@ specifiers:
   '@astrojs/react': ^2.1.0
   '@astrojs/sitemap': ^1.2.1
   '@astrojs/tailwind': ^3.1.1
+  '@cloudinary/url-gen': ^1.10.0
   '@fontsource/inter': ^4.5.15
   '@fontsource/jetbrains-mono': ^4.5.12
   '@types/luxon': ^3.2.0
@@ -38,6 +39,7 @@ dependencies:
   '@astrojs/react': 2.1.0_3xleytyzprlgycb2ded54tx72i
   '@astrojs/sitemap': 1.2.1
   '@astrojs/tailwind': 3.1.1_abn63hxpww4cnl7d6wt4twjp3u
+  '@cloudinary/url-gen': 1.10.0
   '@fontsource/inter': 4.5.15
   '@fontsource/jetbrains-mono': 4.5.12
   '@types/react': 18.0.28
@@ -480,6 +482,18 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
+    dev: false
+
+  /@cloudinary/transformation-builder-sdk/1.2.7:
+    resolution: {integrity: sha512-Q1fhw37BXXmN6/BCxdnw3OUJ6aAy/zpDWH5t+xIwmG5GtYUYMZqOjvdOkOhWBmus9ptq9znuGsYn8h5vtSjT+w==}
+    dependencies:
+      '@cloudinary/url-gen': 1.10.0
+    dev: false
+
+  /@cloudinary/url-gen/1.10.0:
+    resolution: {integrity: sha512-J3V+gzT6Tepw9bMrR3prWVbW22cIFJtPS8Wkt1WFSZVHWpZx8/vv9ACHaxUmRqaSkjhX8ErsuzDY5YxdWnaCbw==}
+    dependencies:
+      '@cloudinary/transformation-builder-sdk': 1.2.7
     dev: false
 
   /@emmetio/abbreviation/2.2.3:

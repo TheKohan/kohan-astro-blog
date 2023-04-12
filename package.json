@@ -16,6 +16,7 @@
     "@astrojs/react": "^2.1.0",
     "@astrojs/sitemap": "^1.2.1",
     "@astrojs/tailwind": "^3.1.1",
+    "@cloudinary/url-gen": "^1.10.0",
     "@fontsource/inter": "^4.5.15",
     "@fontsource/jetbrains-mono": "^4.5.12",
     "@types/react": "^18.0.28",
