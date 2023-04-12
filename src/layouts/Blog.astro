@@ -7,6 +7,7 @@ import Seo from "@components/seo.astro";
 import { Frontmatter } from "@models/index";
 import { Icon } from "astro-icon";
 import { DateTime } from "luxon";
+import CldImage from "@components/cld-image.astro";
 
 export interface Props {
   frontmatter: Frontmatter;
@@ -67,9 +68,9 @@ const { frontmatter } = Astro.props;
             </div>
             <div>{frontmatter.author}</div>
           </div>
-          <img
+          <CldImage
             alt={frontmatter?.image?.alt ?? "Blog post image"}
-            width={900}
+            width={848}
             class="h-full w-full object-cover"
             src={frontmatter?.image?.src ?? "/logo_placeholder.png"}
           />

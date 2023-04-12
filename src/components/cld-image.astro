@@ -5,22 +5,33 @@ import { Resize } from "@cloudinary/url-gen/actions/resize";
 export interface Props {
   src: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
+  class?: string;
 }
 
 const { props } = Astro;
 
 const cldSrc = new Cloudinary({ cloud: { cloudName: "kohan-devblog" } });
-const image = cldSrc
-  .image(props.src)
-  .format("auto")
-  .quality("auto")
-  .resize(Resize.scale().width(props.width).height(props.height));
+const image = cldSrc.image(props.src).format("auto").quality("auto");
 
+if (props.width) {
+  image.resize(Resize.scale().width(props.width));
+}
+
+if (props.height) {
+  image.resize(Resize.scale().height(props.height));
+}
 if (props.src.startsWith("https://")) {
   image.setDeliveryType("fetch");
 }
 ---
 
-<img {...props} alt={props.alt} loading="lazy" src={image.toURL()} />
+<img
+  alt={props.alt}
+  loading="lazy"
+  src={image.toURL()}
+  width={props?.width}
+  height={props?.height}
+  class={props?.class}
+/>
