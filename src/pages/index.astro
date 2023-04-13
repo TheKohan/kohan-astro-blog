@@ -1,8 +1,8 @@
 ---
 import LandingPage from "@layouts/landing-page.astro";
-import { Image } from "@astrojs/image/components";
 import { getCollection } from "astro:content";
 import { DateTime } from "luxon";
+import CldImage from "@components/cld-image.astro";
 
 const postsCollection = (await getCollection("posts")).sort(
   (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
@@ -17,13 +17,12 @@ const latestPosts = postsCollection.slice(0, 6);
   >
     <div class="flex flex-shrink-0 flex-grow-0 justify-center rounded-full">
       <div>
-        <Image
+        <CldImage
           alt="Profile"
           width={150}
-          format={"jpeg"}
           class="h-24 w-24 rounded-full border-4 border-kohan-800 dark:border-kohan-500 md:h-32 md:w-32"
           height={150}
-          src="/assets/profile-pic.jpg"
+          src="kohan-avatar"
         />
       </div>
     </div>
@@ -49,11 +48,10 @@ const latestPosts = postsCollection.slice(0, 6);
       {
         latestPosts.map((post) => (
           <a class="items-top flex gap-4" href={"/posts/" + post.slug}>
-            <Image
-              class:list={"rounded-2xl w-16 h-16 object-cover"}
+            <CldImage
+              class={"h-16 w-16 rounded-2xl object-cover"}
               width={75}
               height={75}
-              format={"jpg"}
               alt={post.data.image.alt}
               src={post.data.image.src}
             />

@@ -1,11 +1,11 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
 import LandingPage from "@layouts/landing-page.astro";
-import { Image } from "@astrojs/image/components";
 import { Icon } from "astro-icon";
 import { DateTime } from "luxon";
 import { Page } from "@models/index";
 import Paginator from "@components/paginator.astro";
+import CldImage from "@components/cld-image.astro";
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection("posts")).sort(
@@ -34,11 +34,10 @@ const latestPosts = posts.slice(0, 4);
                 href={"/posts/" + post.slug}
                 class="relative h-48 cursor-pointer overflow-hidden text-center"
               >
-                <Image
-                  class:list={"rounded-2xl w-[100%] h-[100%] object-cover"}
+                <CldImage
+                  class={"h-[100%] w-[100%] rounded-2xl object-cover"}
                   width={450}
                   height={450}
-                  format={"jpg"}
                   alt={post.data.image.alt}
                   src={post.data.image.src}
                 />
@@ -82,11 +81,10 @@ const latestPosts = posts.slice(0, 4);
           {
             latestPosts.map((post) => (
               <a class="items-top flex gap-4" href={"/posts/" + post.slug}>
-                <Image
-                  class:list={"rounded-2xl w-16 h-16 object-cover"}
+                <CldImage
+                  class={"h-16 w-16 rounded-2xl object-cover"}
                   width={75}
                   height={75}
-                  format={"jpg"}
                   alt={post.data.image.alt}
                   src={post.data.image.src}
                 />
@@ -110,13 +108,12 @@ const latestPosts = posts.slice(0, 4);
         <div class="flex flex-col gap-4 pt-4">
           <div class="flex flex-shrink-0 flex-grow-0 rounded-full">
             <div>
-              <Image
+              <CldImage
                 alt="Profile"
                 width={75}
-                format={"jpeg"}
                 class="h-16 w-16 rounded-full border-4 border-kohan-800 dark:border-kohan-500"
                 height={75}
-                src="/assets/profile-pic.jpg"
+                src="kohan-avatar"
               />
             </div>
           </div>
