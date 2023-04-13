@@ -10,12 +10,13 @@ import remarkCodeTitles from "remark-code-titles";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import image from "@astrojs/image";
+import { remarkReadingTime } from "./src/plugins/remark-read-time-plugin.mjs";
 
 // https://astro.build/config
 export default defineConfig({
   site: `https://kohan.dev/`,
   markdown: {
-    remarkPlugins: [remarkCodeTitles],
+    remarkPlugins: [remarkCodeTitles, remarkReadingTime],
     rehypePlugins: [
       [
         rehypeExternalLinks,
@@ -45,5 +46,11 @@ export default defineConfig({
       wrap: true,
     },
   },
-  integrations: [react(), mdx(), sitemap(), tailwind(), image()],
+  integrations: [
+    react(),
+    mdx({ remarkPlugins: [remarkCodeTitles, remarkReadingTime] }),
+    sitemap(),
+    tailwind(),
+    image(),
+  ],
 });

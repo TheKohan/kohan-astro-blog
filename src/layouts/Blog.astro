@@ -60,7 +60,7 @@ const { frontmatter } = Astro.props;
         <article class="markdown">
           <div class="w-full">
             <h1>{frontmatter.title}</h1>
-            <div class="flex gap-4 rounded-md py-4 text-sm">
+            <div class="flex gap-4 rounded-md text-sm">
               <div>
                 <div class="flex items-center gap-2">
                   <CldImage
@@ -90,6 +90,9 @@ const { frontmatter } = Astro.props;
                     )
                   }
                 </div>
+              </div>
+              <div class="flex items-center">
+                - {frontmatter.minutesRead}
               </div>
             </div>
           </div>

@@ -6,6 +6,7 @@ export type Frontmatter = {
   tags: string[];
   publishDate: Date;
   author: string;
+  minutesRead: string;
 };
 export type PaginatorProps = {
   /** url of the current page */
