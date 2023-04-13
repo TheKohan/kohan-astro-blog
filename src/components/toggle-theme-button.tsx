@@ -10,7 +10,7 @@ export const ToggleThemeButton = () => {
 
   return (
     <button
-      className="fill-gray-500 dark:fill-yellow-500"
+      className="fill-gray-800 dark:fill-yellow-500"
       onClick={handleThemeChange}
     >
       <svg

@@ -58,7 +58,7 @@ const { frontmatter } = Astro.props;
           />
         </div>
         <article class="markdown">
-          <div class="w-full bg-slate-800 px-8 py-4">
+          <div class="w-full">
             <h1>{frontmatter.title}</h1>
             <div class="flex gap-4 rounded-md py-4 text-sm">
               <div>
@@ -71,7 +71,8 @@ const { frontmatter } = Astro.props;
                     src="kohan-avatar"
                   />
                   <div>
-                    By <span class="font-bold text-kohan-500"
+                    By <span
+                      class="font-bold text-kohan-800 dark:text-kohan-500"
                       >{frontmatter.author}</span
                     >
                   </div>
