@@ -1,0 +1,190 @@
+---
+import Header from "@components/header.astro";
+import Footer from "@components/footer.astro";
+import "../styles/global.css";
+import CommonSeo from "@components/common-seo.astro";
+import Seo from "@components/seo.astro";
+import { Frontmatter } from "@models/index";
+import { Icon } from "astro-icon";
+import { DateTime } from "luxon";
+import CldImage from "@components/cld-image.astro";
+
+export interface Props {
+  frontmatter: Frontmatter;
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <CommonSeo />
+    <Seo type="article" frontmatter={frontmatter} />
+    <script>
+      const html = document.documentElement;
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+      if (theme === "light") {
+        html.classList.remove("dark");
+        html.classList.add("light");
+      } else {
+        html.classList.add("dark");
+        html.classList.remove("light");
+      }
+    </script>
+  </head>
+  <body>
+    <body>
+      <div class="mx-auto max-w-4xl px-4 md:px-6">
+        <Header />
+      </div>
+      <main class="mx-auto max-w-4xl px-4 md:px-6">
+        <div class="h-64 w-full overflow-hidden rounded-xl shadow-md">
+          <CldImage
+            alt={frontmatter?.image?.alt ?? "Blog post image"}
+            width={848}
+            class="h-full w-full object-cover"
+            src={frontmatter?.image?.src ?? "/logo_placeholder.png"}
+          />
+        </div>
+        <article class="markdown">
+          <div class="w-full">
+            <h1>{frontmatter.title}</h1>
+            <div class="flex gap-4 rounded-md text-sm">
+              <div>
+                <div class="flex items-center gap-2">
+                  <CldImage
+                    alt="Profile"
+                    width={50}
+                    class="h-8 w-8 rounded-full border-2 border-kohan-800 dark:border-kohan-500"
+                    height={50}
+                    src="kohan-avatar"
+                  />
+                  <div>
+                    By <span
+                      class="font-bold text-kohan-800 dark:text-kohan-500"
+                      >{frontmatter.author}</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-row items-center gap-2">
+                <Icon
+                  class="h-6 w-6 shrink-0 text-kohan-800 dark:text-kohan-500"
+                  name="calendar"
+                />
+                <div>
+                  {
+                    DateTime.fromJSDate(frontmatter.publishDate).toFormat(
+                      "MMM dd, yyyy"
+                    )
+                  }
+                </div>
+              </div>
+              <div class="flex items-center">
+                - {frontmatter.minutesRead}
+              </div>
+            </div>
+          </div>
+
+          <slot />
+        </article>
+      </main>
+      <div class="mx-auto max-w-4xl px-4 md:px-6">
+        <Footer />
+      </div>
+    </body>
+    <script>
+      const copySVG = `<svg width="1.3em" height="1.3em" viewBox="0 0 256 256"><path fill="currentColor" d="M216 36H88a4 4 0 0 0-4 4v44H40a4 4 0 0 0-4 4v128a4 4 0 0 0 4 4h128a4 4 0 0 0 4-4v-44h44a4 4 0 0 0 4-4V40a4 4 0 0 0-4-4Zm-52 176H44V92h120Zm48-48h-40V88a4 4 0 0 0-4-4H92V44h120Z"/></svg>`;
+
+      let titles = document.querySelectorAll(
+        ".remark-code-title"
+      ) as NodeListOf<HTMLDivElement>;
+      titles.forEach((title) => {
+        title.dir = "ltr";
+      });
+
+      let blocks = document.querySelectorAll("pre");
+      blocks.forEach((block) => {
+        block.className = "relative flex w-full h-full";
+        block.dir = "ltr";
+
+        let copyButton = document.createElement("button");
+        copyButton.className =
+          "inline-flex absolute right-[.45em] top-[.5em] bg-zinc-100/20 rounded px-1 py-1 text-sm text-zinc-50 hover:bg-zinc-100/25 focus:outline-none focus:shadow-outline text-brand-primary";
+        copyButton.innerHTML = copySVG;
+        copyButton.addEventListener("click", () => {
+          let text = "";
+          const pre = copyButton.parentElement;
+          let code = pre?.querySelector("code");
+          if (code) {
+            text = code.innerText;
+          } else {
+            const span = pre?.querySelector("span");
+            if (span) {
+              text = span.innerText;
+            }
+          }
+          if (text) {
+            try {
+              navigator.clipboard.writeText(text);
+            } catch (err) {
+              console.error("Failed to copy: ", err);
+            }
+            copyButton.innerHTML = `<svg width="1.3em" height="1.3em" viewBox="0 0 256 256"><path fill="#22c55e" d="M104 192a8.5 8.5 0 0 1-5.7-2.3l-56-56a8.1 8.1 0 0 1 11.4-11.4l50.3 50.4L210.3 66.3a8.1 8.1 0 0 1 11.4 11.4l-112 112a8.5 8.5 0 0 1-5.7 2.3Z"/></svg>`;
+
+            setTimeout(() => {
+              copyButton.innerHTML = copySVG;
+            }, 1000);
+          }
+        });
+
+        block.appendChild(copyButton);
+        block.setAttribute("tabindex", "0");
+      });
+    </script>
+    <script>
+      const styleInlineCodeElements = () => {
+        const codeElements = Array.from(
+          document.querySelectorAll("code")
+        ).filter((codeElement) => codeElement.parentNode?.nodeName !== "PRE");
+        codeElements.forEach((codeElement) => {
+          const codeWrapper = document.createElement("div");
+          codeWrapper.classList.add("code-wrapper");
+          codeElement.parentNode?.insertBefore(codeWrapper, codeElement);
+          codeWrapper.appendChild(codeElement);
+        });
+      };
+      styleInlineCodeElements();
+    </script>
+    <style is:global>
+      :root {
+        --accent: 124, 58, 237;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          #da62c4 30%,
+          white 60%
+        );
+      }
+      html {
+        font-family: system-ui, sans-serif;
+        background-color: #f6f6f6;
+      }
+      code {
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+      }
+    </style>
+  </body>
+</html>
