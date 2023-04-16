@@ -18,7 +18,7 @@
     --color-foreground: 15 23 42;
     --color-background: 236 228 236;
 
-    @apply bg-gray-100 text-slate-900;
+    background-color: #f6f6f6;
   }
 
   html.dark {
