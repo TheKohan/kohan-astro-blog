@@ -13,11 +13,11 @@ tags: ["astro", "blogging", "learning in public"]
 
 # Example
 
-```js title="..." {1, 3-6}
+```js title="123" {1, 3-6}
 console.log("Hello World");
 ```
 
-```js {1,3-4} showLineNumbers
+```js showLineNumbers
 function fancyAlert(arg) {
   if (arg) {
     $.facebox({ div: "#foo" });
@@ -25,28 +25,9 @@ function fancyAlert(arg) {
 }
 ```
 
-```javascript:file.js {1, 3-6} showLineNumbers
-let me = "ipikuka";
-// the other codes...
-```
-
-```js:file.js {1, 3-6} showLineNumbers
-import getReadingTime from "reading-time";
-import { toString } from "mdast-util-to-string";
-
-export function remarkReadingTime() {
-  return function (tree, { data }) {
-    const textOnPage = toString(tree);
-    const readingTime = getReadingTime(textOnPage);
-    // readingTime.text nos dará los minutos de lectura en un string amigable,
-    // por ejemplo, "3 min read"
-    data.astro.frontmatter.minutesRead = readingTime.text;
-  };
-}
-```
-
 ## My Awesome Blog Post
 
+a
 Welcome to my awesome blog post! In this post, I'll be sharing some tips and tricks for using Markdown to write blog posts.
 
 ## Headers
