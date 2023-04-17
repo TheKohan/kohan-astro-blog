@@ -11,9 +11,10 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import image from "@astrojs/image";
 import { remarkReadingTime } from "./src/plugins/remark-read-time-plugin.mjs";
 import rehypePrettyCode from "rehype-pretty-code";
+import json from "./public/assets/moon_ii.json" assert { type: "json" };
 
 const prettyCodeOptions = {
-  theme: "one-dark-pro",
+  theme: json,
   keepBackground: true,
   onVisitLine(node) {
     if (node.children.length === 0) {
