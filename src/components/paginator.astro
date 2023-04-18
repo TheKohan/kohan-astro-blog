@@ -17,14 +17,16 @@ const { page } = Astro.props;
 
 <div class="flex justify-center gap-2">
   {
-    [...Array.from(Array(page.lastPage))].map((_, i) => {
-      const activeStyle = "font-bold text-kohan-500";
-      const active = page.currentPage === i + 1;
-      return (
-        <a class={active ? activeStyle : ""} href={"/posts/" + (i + 1)}>
-          {i + 1}
-        </a>
-      );
-    })
+    page.lastPage !== 1
+      ? [...Array.from(Array(page.lastPage))].map((_, i) => {
+          const activeStyle = "font-bold text-kohan-500";
+          const active = page.currentPage === i + 1;
+          return (
+            <a class={active ? activeStyle : ""} href={"/posts/" + (i + 1)}>
+              {i + 1}
+            </a>
+          );
+        })
+      : null
   }
 </div>

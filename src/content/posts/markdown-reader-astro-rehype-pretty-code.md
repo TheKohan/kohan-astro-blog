@@ -1,5 +1,5 @@
 ---
-title: "Pretty codeblocks in Astro with Rehype Pretty Code"
+title: "Pretty codeblocks with Astro, Rehype Pretty Code"
 description: "Build great looking codeblocks with highlighting, titles and line numbering."
 author: "Piotr Kochanowski"
 isMdx: true
