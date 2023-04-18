@@ -213,9 +213,13 @@
     @apply mx-auto mb-3 overflow-scroll rounded  bg-slate-800 font-mono;
   }
 
+  .markdown [data-rehype-pretty-code-title] {
+    @apply -mt-1 inline rounded-t-md border-t-2 border-kohan-600 bg-slate-800 px-4 py-2;
+  }
+
   /* CODE STYLES */
   .markdown pre > code {
-    @apply grid py-2;
+    @apply grid py-[10px];
   }
 
   .markdown .code-wrapper {

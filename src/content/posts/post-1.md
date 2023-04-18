@@ -13,9 +13,14 @@ tags: ["astro", "blogging", "learning in public"]
 
 # Example
 
-```js title="123" {1}
+```js title="somethingComponent.ts" {4-6}
 🔥
 console.log("Hello World");
+function fancyAlert(arg) {
+  if (arg) {
+    $.facebox({ div: "#foo" });
+  }
+}
 ```
 
 ```js showLineNumbers
