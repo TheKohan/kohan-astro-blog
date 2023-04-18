@@ -1,14 +1,13 @@
 ---
-title: "The spectacle before us was indeed sublime"
-
-description: "Welcome, it's great to have you here. We know that first impressions are important, so we've populated..."
+title: "Pretty codeblocks in Astro with Rehype Pretty Code"
+description: "Build great looking codeblocks with highlighting, titles and line numbering."
 author: "Piotr Kochanowski"
-isMdx: false
-publishDate: 2022-06-01
+isMdx: true
+publishDate: 2023-04-18
 image:
   src: "test"
   alt: "The Astro logo with the word One."
-tags: ["astro", "rehype", "markdown"]
+tags: ["astro", "blogging", "learning in public"]
 ---
 
 # Example
