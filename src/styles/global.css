@@ -214,7 +214,7 @@
   }
 
   .markdown [data-rehype-pretty-code-title] {
-    @apply -mt-1 inline rounded-t-md border-t-2 border-kohan-600 bg-slate-800 px-4 py-2;
+    @apply -mt-1 inline rounded-t-md border-t-2 border-kohan-500 bg-slate-800 px-4 py-2;
   }
 
   /* CODE STYLES */

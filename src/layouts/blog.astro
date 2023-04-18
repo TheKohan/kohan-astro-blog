@@ -5,7 +5,6 @@ import "../styles/global.css";
 import CommonSeo from "@components/common-seo.astro";
 import Seo from "@components/seo.astro";
 import { Frontmatter } from "@models/index";
-import { Icon } from "astro-icon";
 import { DateTime } from "luxon";
 import CldImage from "@components/cld-image.astro";
 
@@ -58,76 +57,63 @@ const { frontmatter } = Astro.props;
           />
         </div>
         <article class="markdown">
-          <div class="w-full">
-            <h1>{frontmatter.title}</h1>
-            <div
-              class="flex gap-4 rounded-md bg-elevation p-4 text-sm shadow-md"
-            >
-              <div>
-                <div class="flex items-center gap-2">
-                  <CldImage
-                    alt="Profile"
-                    width={50}
-                    class="h-8 w-8 rounded-full border-2 border-kohan-800 dark:border-kohan-500"
-                    height={50}
-                    src="kohan-avatar"
-                  />
-                  <div>
-                    By <span
-                      class="font-bold text-kohan-800 dark:text-kohan-500"
-                      >{frontmatter.author}</span
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="flex flex-row items-center gap-2">
-                <Icon
-                  class="h-6 w-6 shrink-0 text-kohan-800 dark:text-kohan-500"
-                  name="calendar"
-                />
-                <div>
-                  {
-                    DateTime.fromJSDate(frontmatter.publishDate).toFormat(
-                      "MMM dd, yyyy"
-                    )
-                  }
-                </div>
-              </div>
-              <div class="flex items-center">
-                {frontmatter.minutesRead}
-              </div>
+          <h1>{frontmatter.title}</h1>
+          <div
+            class="flex items-center gap-2 rounded-md bg-elevation p-4 shadow-md"
+          >
+            <CldImage
+              alt="Profile"
+              width={50}
+              class="h-8 w-8 rounded-full border-2 border-kohan-800 dark:border-kohan-500"
+              height={50}
+              src="kohan-avatar"
+            />
+            <div>
+              By <span class="font-bold text-kohan-800 dark:text-kohan-500"
+                >{frontmatter.author + " "}
+              </span>
+              {
+                "on " +
+                  DateTime.fromJSDate(frontmatter.publishDate).toFormat(
+                    "MMM dd, yyyy"
+                  )
+              }
+              ~ {frontmatter.minutesRead}
             </div>
           </div>
 
           <slot />
         </article>
+
+        <div class="mx-auto max-w-4xl px-4 md:px-6">
+          <Footer />
+        </div>
+        <script>
+          const styleInlineCodeElements = () => {
+            const codeElements = Array.from(
+              document.querySelectorAll("code")
+            ).filter(
+              (codeElement) => codeElement.parentNode?.nodeName !== "PRE"
+            );
+            codeElements.forEach((codeElement) => {
+              const codeWrapper = document.createElement("div");
+              codeWrapper.classList.add("code-wrapper");
+              codeElement.parentNode?.insertBefore(codeWrapper, codeElement);
+              codeWrapper.appendChild(codeElement);
+            });
+          };
+          styleInlineCodeElements();
+        </script>
+        <style is:global>
+          html {
+            font-family: system-ui, sans-serif;
+          }
+          code {
+            font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+              DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+          }
+        </style>
       </main>
-      <div class="mx-auto max-w-4xl px-4 md:px-6">
-        <Footer />
-      </div>
     </body>
-    <script>
-      const styleInlineCodeElements = () => {
-        const codeElements = Array.from(
-          document.querySelectorAll("code")
-        ).filter((codeElement) => codeElement.parentNode?.nodeName !== "PRE");
-        codeElements.forEach((codeElement) => {
-          const codeWrapper = document.createElement("div");
-          codeWrapper.classList.add("code-wrapper");
-          codeElement.parentNode?.insertBefore(codeWrapper, codeElement);
-          codeWrapper.appendChild(codeElement);
-        });
-      };
-      styleInlineCodeElements();
-    </script>
-    <style is:global>
-      html {
-        font-family: system-ui, sans-serif;
-      }
-      code {
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-      }
-    </style>
   </body>
 </html>
