@@ -15,7 +15,6 @@ import json from "./public/assets/moon_ii.json" assert { type: "json" };
 
 const prettyCodeOptions = {
   theme: json,
-  keepBackground: true,
   onVisitLine(node) {
     if (node.children.length === 0) {
       node.children = [

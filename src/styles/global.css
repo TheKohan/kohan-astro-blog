@@ -132,7 +132,7 @@
 
   /* Markdown Styling */
   .markdown {
-    @apply flex w-full flex-col items-start justify-start leading-relaxed text-slate-900 selection:bg-kohan-200 selection:text-kohan-500 dark:text-kohan-100 dark:selection:bg-kohan-100 dark:selection:text-slate-900;
+    @apply leading-relaxed text-slate-900 selection:bg-kohan-200 selection:text-kohan-500 dark:text-kohan-100 dark:selection:bg-kohan-100 dark:selection:text-slate-900;
   }
   .markdown h1 {
     @apply mt-8 mb-4 text-3xl font-extrabold;
@@ -163,24 +163,6 @@
           decoration-dotted underline-offset-2  
           hover:text-kohan-700 dark:text-kohan-200 
           dark:decoration-kohan-200 dark:hover:text-kohan-500;
-  }
-
-  :is([dir="rtl"]) .markdown a[rel~="noreferrer"] > span {
-    @apply inline-flex -scale-x-100;
-  }
-
-  .markdown .highlighted {
-    background-color: rgba(200, 200, 255, 0.1);
-    border-left-color: #60a5fa;
-    border-left-width: 3px;
-    border-left-style: solid;
-  }
-
-  .markdown div[data-rehype-pretty-code-fragment] {
-    @apply w-full;
-  }
-  .markdown pre {
-    @apply mx-auto mb-3 overflow-scroll rounded border border-kohan-500/80 p-2 pl-3 font-mono shadow-xl sm:pt-2;
   }
 
   .markdown ol {
@@ -219,28 +201,44 @@
     @apply text-slate-900 dark:text-kohan-50;
   }
 
+  .markdown .line {
+    @apply border-l-4 border-transparent py-[2px];
+  }
+
+  .markdown .highlighted {
+    @apply border-l-4 border-kohan-300 bg-kohan-300/20;
+  }
+
+  .markdown pre {
+    @apply mx-auto mb-3 overflow-scroll rounded  bg-slate-800 font-mono;
+  }
+
+  /* CODE STYLES */
+  .markdown pre > code {
+    @apply grid py-2;
+  }
+
+  .markdown .code-wrapper {
+    @apply inline rounded border border-kohan-200 bg-kohan-200/40 px-0.5 py-[0.5px] dark:border-kohan-400/30 dark:bg-kohan-400/20;
+  }
+
   /* CSS LINE NUMBERS */
-  code {
+  .markdown code {
     counter-reset: line;
   }
 
-  code > .line::before {
+  .markdown code > .line::before {
+    content: "123";
     counter-increment: line;
     content: counter(line);
-
-    /* Other styling */
-    display: inline-block;
-    width: 1rem;
-    margin-right: 2rem;
-    text-align: right;
-    color: gray;
+    @apply mr-8 inline-block w-4 text-right text-slate-500;
   }
 
-  code[data-line-numbers-max-digits="2"] > .line::before {
+  .markdown code[data-line-numbers-max-digits="2"] > .line::before {
     width: 2rem;
   }
 
-  code[data-line-numbers-max-digits="3"] > .line::before {
+  .markdown code[data-line-numbers-max-digits="3"] > .line::before {
     width: 3rem;
   }
 }

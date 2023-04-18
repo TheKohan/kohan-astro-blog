@@ -13,7 +13,8 @@ tags: ["astro", "blogging", "learning in public"]
 
 # Example
 
-```js title="123" {1, 3-6}
+```js title="123" {1}
+🔥
 console.log("Hello World");
 ```
 
@@ -74,7 +75,7 @@ Images are a great way to add visual interest to your blog post. Here's an examp
 
 Code is a great way to share programming examples in your blog post. Here's an example of inline code:
 
-`print("Hello, world!")` `create-t3-app`
+`print("Hello, world!")` text now : `create-t3-app`
 
 And here's an example of a code block:
 
