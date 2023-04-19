@@ -219,23 +219,26 @@
 
   /* CODE STYLES */
   .markdown pre > code {
-    @apply grid py-[10px];
+    @apply grid py-[10px] text-sm;
   }
 
   .markdown .code-wrapper {
-    @apply inline rounded border border-kohan-200 bg-kohan-200/40 px-0.5 py-[0.5px] dark:border-kohan-400/30 dark:bg-kohan-400/20;
+    @apply inline rounded border border-kohan-200 bg-kohan-200/40 px-0.5 py-[0.5px] text-sm dark:border-kohan-400/30 dark:bg-kohan-400/20;
   }
 
   /* CSS LINE NUMBERS */
-  .markdown code {
+  .markdown code[data-line-numbers] {
     counter-reset: line;
   }
 
-  .markdown code > .line::before {
-    content: "123";
+  .markdown code[data-line-numbers] > .line::before {
     counter-increment: line;
     content: counter(line);
     @apply mr-8 inline-block w-4 text-right text-slate-500;
+  }
+  .markdown code > .line::before {
+    content: "";
+    @apply inline-block w-4 text-right text-slate-500;
   }
 
   .markdown code[data-line-numbers-max-digits="2"] > .line::before {

@@ -1,5 +1,5 @@
 ---
-title: "Pretty codeblocks with Astro, Rehype Pretty Code"
+title: "Build your own styled code blocks with Astro and Rehype Pretty Code"
 description: "Build great looking codeblocks with highlighting, titles and line numbering."
 author: "Piotr Kochanowski"
 isMdx: true
@@ -10,131 +10,108 @@ image:
 tags: ["astro", "blogging", "learning in public"]
 ---
 
-# Example
+With astro it has never been easier to build efficient, fast and content-rich sites. It has built-in markdown reader with file-based routing system, all we need to do is to handle the styling and layout side of things. Though it provides much utility out of the box, the customization can be rather tricky.
 
-```js title="somethingComponent.ts" {4-6}
-🔥
-console.log("Hello World");
-function fancyAlert(arg) {
-  if (arg) {
-    $.facebox({ div: "#foo" });
-  }
-}
+Today we're going to build a complex great looking code blocks with highlighting, line numbering and titles.
+
+## Initialize Astro project
+
+First let's initialize astro project
+
+```bash showLineNumbers{022}
+# create a new project with npm or yarn or pnpm
+npm create astro@latest
 ```
 
-```js showLineNumbers
-function fancyAlert(arg) {
-  if (arg) {
-    $.facebox({ div: "#foo" });
-  }
-}
+Lets then create our project in `./pretty-code-blocks` directory with a `empty` preset and of course `Typescript` support too.
+
+## Basic setup
+
+First lets create layout for our markdown file. It will be a simple `.astro` component with some initial styling.
+
+```text {10-11}
+├── README.md
+├── astro.config.mjs
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon 2.svg
+│   └── favicon.svg
+├── src
+│   ├── env.d.ts
+│   ├── layouts
+│   │   └── layout.astro
+│   └── pages
+│       └── index.astro
+└── tsconfig.json
 ```
 
-## My Awesome Blog Post
+Now lets write some astro! This will be a simple html page with `</slot>` in which markup will be rendered.
 
-a
-Welcome to my awesome blog post! In this post, I'll be sharing some tips and tricks for using Markdown to write blog posts.
+```astro title="layout.astro" showLineNumbers
+---
+// There's no need for props in our case,
+// but we could access frontmatter here if we wanted to further customize our layout
+// Check: https://docs.astro.build/pl/guides/markdown-content/#frontmatter-layout
+---
 
-## Headers
-
-Headers are a great way to structure your blog post and make it easy to read. Here's an example of a header:
-
-### Subheader
-
-## Emphasis
-
-You can emphasize text in Markdown using asterisks or underscores. Here are some examples:
-
-- _Italic_
-- **Bold**
-- **_Bold and italic_**
-
-## Lists
-
-Lists are a great way to organize information. There are two types of lists in Markdown: ordered and unordered. Here's an example of an unordered list:
-
-- Item 1
-- Item 2
-- Item 3
-
-And here's an example of an ordered list:
-
-1. Item 1
-2. Item 2
-3. Item 3
-
-## Links
-
-Links are a great way to reference other resources in your blog post. Here's an example:
-
-[Google](https://www.google.com)
-
-## Images
-
-Images are a great way to add visual interest to your blog post. Here's an example:
-
-![Markdown Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Markdown-mark.svg/1200px-Markdown-mark.svg.png)
-
-## Code
-
-Code is a great way to share programming examples in your blog post. Here's an example of inline code:
-
-`print("Hello, world!")` text now : `create-t3-app`
-
-And here's an example of a code block:
-
-## Table
-
-| **Name**    | **Age** | **Gender** |
-| ----------- | ------- | ---------- |
-| John Smith  | 25      | Male       |
-| Jane Doe    | 30      | Female     |
-| Bob Johnson | 40      | Male       |
-
-```jsx
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Astro</title>
-  </head>
-  <body class="markdown">
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog/">Blog</a>
-    <a href="/posts/post-1">post-1</a>
-    <a href="/posts/post-2">post-2</a>
-    <a href="/posts/post-3">post-3</a>
-    <h1>About Me</h1>
-    <h2>... and my new Astro site!</h2>
-
-    <p>
-      I am working through Astro's introductory tutorial. This is the second
-      page on my website, and it's the first one I built myself!
-    </p>
-
-    <p>
-      This site will update as I complete more of the tutorial, so keep checking
-      back and see how my journey is going!
-    </p>
-    <p>Here are a few facts about me:</p>
-    <ul>
-      <li>My name is {identity.firstName}.</li>
-      <li>
-        I live in {identity.country} and I work as a {identity.occupation}.
-      </li>
-      {identity.hobbies.length >= 2 && (
-        <li>
-          Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
-        </li>
-      )}
-    </ul>
-    <p>My skills are:</p>
-    <ul>
-      {skills.map((skill) => (
-        <li>{skill}</li>
-      ))}
-    </ul>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+        <div class="content">
+           <slot/> <!--  This is where our parsed markdown would be rendered -->
+        </div>
+	</body>
 </html>
+
+<style>
+    /* Some initial Styles */
+    body { 
+        width: 100vw;
+        height: 100vh;
+        background-color: #1E293B;
+        color:white;
+    }
+    .content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 3rem;
+    }
+</style>
 ```
+
+Now as we don't really need our generic landing page let's delete `pages/index.astro` and replace it with `index.md`. Astro will automatically pick up files in this directory and embedd markup files in specified layouts. If you want to avoid putting your content inside `pages` directory (you want to dynamically render routes) check out [Astro's content collections](https://docs.astro.build/pl/guides/content-collections/) 
+
+```astro title="index.md"
+---
+layout: "../layouts/layout.astro" // route to our layout
+---
+
+## Basic layout setup
+<!-- remove "/" before backticks to make it work in .md -->
+/```js title="somethingComponent.ts" {4-6}
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
+const CodeBlock = ({ codestring }) => {
+  return (
+    <SyntaxHighlighter language="javascript" style={docco}>
+            {codeString}
+    </SyntaxHighlighter>
+  );
+};
+/```
+```
+
+And thats it ! Our basic configuration is done. Now lets run the app from terminal with `npm run dev`.
+
+![Test](https://res.cloudinary.com/kohan-devblog/image/upload/c_scale,w_1188/v1681935130/Posts/markdown-reader-astro-rehype-pretty-code/Screenshot_2023-04-19_at_22.11.48_pak9lg.png)
+
+Thanks to Astro's built in `Shiki`, `Rehype` and `Remark` we're seeing styled and formatted code block. But that's just the beggining as we want it to look "pretty".
+
+## 
