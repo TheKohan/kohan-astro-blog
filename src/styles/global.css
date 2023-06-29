@@ -213,8 +213,14 @@
     @apply mx-auto mb-3 overflow-scroll rounded  bg-slate-800 font-mono;
   }
 
+  .markdown [data-rehype-pretty-code-fragment] {
+    @apply relative;
+  }
+  .markdown div[data-rehype-pretty-code-fragment] div + pre {
+    @apply mt-16;
+  }
   .markdown [data-rehype-pretty-code-title] {
-    @apply -mt-1 inline rounded-t-md border-t-2 border-kohan-500 bg-slate-800 px-4 py-2 text-kohan-100;
+    @apply absolute left-0 -top-8 rounded-t-md border-t-2 border-kohan-500 bg-slate-800 px-4 py-2 text-kohan-100;
   }
 
   /* CODE STYLES */
