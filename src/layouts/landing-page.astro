@@ -7,15 +7,16 @@ import Seo from "@components/seo.astro";
 
 export interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <CommonSeo />
-    <Seo type="website" title={title} />
+    <Seo type="website" title={title} description={description} />
     <script is:inline>
       const html = document.documentElement;
       const theme = (() => {

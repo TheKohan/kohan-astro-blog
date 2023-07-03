@@ -5,9 +5,10 @@ export interface Props {
   frontmatter?: Frontmatter;
   type?: string;
   title?: string;
+  description?: string | undefined;
 }
 
-const { frontmatter, type, title } = Astro.props;
+const { frontmatter, type, title, description } = Astro.props;
 
 const openGraph = {
   type: type ?? "website",
@@ -27,6 +28,8 @@ const config = {
   canonicalUrl: new URL(Astro.url.pathname, Astro.site),
   title: "Kohan.Dev",
   description:
+    description ??
+    frontmatter?.description ??
     "Stay up-to-date on Typescript, React, and React Native with Kohan Dev. Your source for expert insights on the latest frontend and backend technologies.",
   contentTitle: pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle,
   imageSrc: frontmatter?.image?.src ?? openGraph.image.src,

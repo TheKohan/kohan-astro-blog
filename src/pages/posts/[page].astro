@@ -23,7 +23,10 @@ const posts = page.data as typeof postsCollection;
 const latestPosts = posts.slice(0, 4);
 ---
 
-<LandingPage title="Posts">
+<LandingPage
+  title="Posts"
+  description="Discover the ultimate TypeScript React blogpost list on my tech blog. Explore articles covering a wide range of tech topics. Stay updated with the latest trends, tips, and tutorials to enhance your TypeScript React skills and stay ahead in the ever-evolving world of technology."
+>
   <div class="mb-8 flex flex-col gap-8 lg:flex-row">
     <div class="flex flex-col gap-8">
       <div class="flex basis-1/2 flex-col gap-8">
