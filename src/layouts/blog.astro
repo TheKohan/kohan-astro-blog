@@ -48,10 +48,10 @@ const { frontmatter } = Astro.props;
         <Header />
       </div>
       <main class="mx-auto max-w-4xl px-4 md:px-6">
-        <div class="h-64 w-full overflow-hidden rounded-xl shadow-md">
+        <div class="overflow-hidden rounded-xl shadow-md">
           <CldImage
             alt={frontmatter?.image?.alt ?? "Blog post image"}
-            width={848}
+            width={1100}
             class="h-full w-full object-cover"
             src={frontmatter?.image?.src ?? "/logo_placeholder.png"}
           />
