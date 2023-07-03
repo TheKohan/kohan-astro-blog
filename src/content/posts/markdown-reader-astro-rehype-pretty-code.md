@@ -5,29 +5,29 @@ author: "Piotr Kochanowski"
 isMdx: true
 publishDate: 2023-04-18
 image:
-  src: "test"
-  alt: "The Astro logo with the word One."
+  src: "Posts/markdown-reader-astro-rehype-pretty-code/markdown-pretty-code-thumbnail_x36kxm.png"
+  alt: "Markdown reader built with rehype pretty code"
 tags: ["astro", "blogging", "learning in public"]
 ---
 
-With astro it has never been easier to build efficient, fast and content-rich sites. It has built-in markdown reader with file-based routing system, all we need to do is to handle the styling and layout side of things. Though it provides much utility out of the box, the customization can be rather tricky.
+With Astro, it has never been easier to build efficient, fast, and content-rich sites. It has a built-in markdown reader with a file-based routing system. All we need to do is handle the styling and layout side of things. Though it provides much utility out of the box, customization can be rather tricky.
 
-Today we're going to build a complex great looking code blocks with highlighting, line numbering and titles.
+Today, we're going to build complex, great-looking code blocks with highlighting, line numbering, and titles.
 
 ## Initialize Astro project
 
-First let's initialize astro project
+First, let's initialize the Astro project.
 
 ```bash 
 # create a new project with npm or yarn or pnpm
 npm create astro@latest
 ```
 
-Then let's create our project in `./pretty-code-blocks` directory with an `empty` preset and of course `Typescript` support.
+Then, let's create our project in the `./pretty-code-blocks` directory with an `empty` preset and, of course, TypeScript support.
 
 ## Basic setup
 
-First lets create layout for our markdown file. It will be a simple `.astro` component with some initial styling.
+We'll start by creating layout for our markdown file. It will be a simple `.astro` component with some initial styling.
 
 ```text {10-11}
 ├── README.md
@@ -46,7 +46,7 @@ First lets create layout for our markdown file. It will be a simple `.astro` com
 └── tsconfig.json
 ```
 
-Now lets write some astro! This will be a simple html page with `</slot>` in which markup will be rendered.
+Now, let's write some Astro! This will be a simple HTML page with `</slot>` tag where the markup will be rendered.
 
 ```astro title="layout.astro" showLineNumbers
 ---
@@ -87,7 +87,7 @@ Now lets write some astro! This will be a simple html page with `</slot>` in whi
 </style>
 ```
 
-Now as we don't really need our generic landing page let's delete `pages/index.astro` and replace it with `index.md`. Astro will automatically pick up files in this directory and embedd markup files in specified layouts. If you want to avoid putting your content inside `pages` directory (you want to dynamically render routes) check out [Astro's content collections](https://docs.astro.build/pl/guides/content-collections/) 
+Since we don't really need our generic landing page, let's delete `pages/index.astro` and replace it with `index.md`. Astro will automatically pick up files in this directory and embed markup files in specified layouts. If you want to avoid putting your content inside the `pages` directory and dynamically render routes, check out [Astro's content collections](https://docs.astro.build/pl/guides/content-collections/) 
 
 ````md title="index.md"
 ---
@@ -107,21 +107,20 @@ const CodeBlock = ({ codestring }) => {
 ```
 ````
 
-And thats it ! Our basic configuration is done. Now lets run the app from terminal with `npm run dev`.
+And that's it! Our basic configuration is done. Now, let's run the app from the terminal with `npm run dev`.
 
 ![Photo of code block](https://res.cloudinary.com/kohan-devblog/image/upload/c_scale,w_1114/v1688062307/Posts/markdown-reader-astro-rehype-pretty-code/Screenshot_2023-06-29_at_20.09.29_lelqld.png)
 
-Thanks to Astro's built in `Shiki`, `Rehype` and `Remark` we're seeing styled and formatted code block. But that's just the beggining as we want it to look "pretty".
+Thanks to Astro's built-in `Shiki`, `Rehype`, and `Remark`, we're seeing styled and formatted code blocks. But that's just the beginning, as we want them to look "pretty".
 
 ## Instaling `rehype-pretty-code`
 
- `rehype-pretty-code` is a Rehype plugin that provides styling and functionality for code blocks parsing. 
- Lets install it with npm:
+`rehype-pretty-code` is a Rehype plugin that provides styling and functionality for parsing code blocks. 
+Let's install it using npm:
 ```bash
 npm install rehype-pretty-code
 ```
-Next lets set up our plugin inside `astro.config.mjs`. It will be a basic configuration with line highlighting and
-hooking up downloaded theme from `.json` file. Bear in mind that config can be further extended, to see all of the possibilities visit [rehype-pretty-code GitHub](https://rehype-pretty-code.netlify.app/).
+Next, let's set up our plugin inside `astro.config.mjs`. We'll provide a basic configuration and hook up a downloaded theme from a `.json` file (we'll add line highlighting later). Bear in mind that the configuration can be further extended. To see all the possibilities, visit the [rehype-pretty-code GitHub](https://rehype-pretty-code.netlify.app/).
 
 
 ```js title="astro.config.mjs" showLineNumbers {2-3,6-11,14-19}
@@ -170,13 +169,13 @@ Lets modify the styles a bit to see how much our code block has already changed.
 </style>
 ```
 
-This way we end up with this code snippet. We'll now move to adding some functionality to it.
+This is how the code snippet should look like. Now, let's move on to adding some functionality to it.
 
 ![Photo of code block after applying plugin](https://res.cloudinary.com/kohan-devblog/image/upload/c_scale,w_1077/v1688062536/Posts/markdown-reader-astro-rehype-pretty-code/Screenshot_2023-06-29_at_20.15.13_tme3ng.png)
 
 ## Code highlighting
 
-Markdown is starting to look a bit better, lets now add code highlighting feature which is provided by `rehype-pretty-code`. 
+The Markdown is starting to look a bit better. Now, let's add the code highlighting feature provided by `rehype-pretty-code`.
 
 ```js title="astro.config.mjs" showLineNumbers {11-23}
 import { defineConfig } from 'astro/config';
@@ -214,7 +213,7 @@ export default defineConfig({
 
 ```
 
-After making this changes will be able to use meta string `{<linestart>-<lineend>,<line>}` to highlight any line of range of lines. Now we'll want to style the lines with `highlighted` class on it.
+After making this changes we will be able to use meta string `{<linestart>-<lineend>,<line>}` to highlight any line or range of lines. All That's left is to style the lines with `highlighted` class on it and put the metastring on our code block.
 
 ```astro title="layout.astro" {20-27} showLineNumbers
 <style is:global>
@@ -246,8 +245,6 @@ After making this changes will be able to use meta string `{<linestart>-<lineend
     }
 </style>
 ```
-Now lets highlight some lines in our `index.md` 
-
 ````md title="index.md" {5}
 ---
 layout: "../layouts/layout.astro" // route to our layout
@@ -266,15 +263,14 @@ const CodeBlock = ({ codestring }) => {
 ```
 ````
 
-So we'll end up with something like this:
-
+We should end up with code block looking exactly like this:
 ![Markdown with highlights](https://res.cloudinary.com/kohan-devblog/image/upload/c_scale,w_1111/v1688066736/Posts/markdown-reader-astro-rehype-pretty-code/Screenshot_2023-06-29_at_21.25.21_pxv8dy.png)
 
 ## Line numbering
 
-Now we're going to implment line countering using `counter` css prop, i'm pretty sure many of you hear about it for the first time here. Don't worry there are a lot of css properties that are not being used on the daily basis by most of the devs.
+Let's move on to implementing the line counter feature using the `counter` CSS property. I'm pretty sure many of you are hearing about it for the first time here. Don't worry, there are a lot of CSS properties that are not used on a daily basis by most developers.
 
-Lets implement counter which will count our `span` elements with `.line` class.
+We'll implement a counter that will count our `span` elements with the `.line` class.
 
 ```astro title="layout.astro" {28-61} showLineNumbers
 <style is:global>
@@ -341,7 +337,7 @@ Lets implement counter which will count our `span` elements with `.line` class.
 </style>
 ```
 
-Lets now enable line numbering for our markdown
+Line numbering is not enabled by default, to make `rehype-pretty-code` aware that we want our code block to have line numbers, we need to use `showLineNumbers` meta string.
 
 ````md title="index.md" {5}
 ---
@@ -361,15 +357,14 @@ const CodeBlock = ({ codestring }) => {
 ```
 ````
 
-Right now all the lines of could should be numbered
+Right now all of the lines in code block should be numbered.
 
 ![Markdown with highlighting and line numbering](https://res.cloudinary.com/kohan-devblog/image/upload/c_scale,w_1153/v1688068184/Posts/markdown-reader-astro-rehype-pretty-code/Screenshot_2023-06-29_at_21.49.26_uelj2f.png)
 
-All that is left to do is do something about that ugly title on top of the markdown. Lets handle that next!
-
+All that's left to do is to address the issue of the ugly title on top of the markdown. Let's handle that next!
 ## Styling markdown's title
 
-Styling the title is fairly simple as `rehype-pretty-code` has us covered here, we'll just need to target custom attribute that the plugin attaches to the element with our css.
+Styling the title will be fairly simple as `rehype-pretty-code` has us covered here. We just need to target custom attribute that the plugin attaches to the element with our css.
 
 ```astro title="layout.astro" {63-76} showLineNumbers
 <style is:global>
@@ -451,9 +446,10 @@ Styling the title is fairly simple as `rehype-pretty-code` has us covered here, 
 ```
 
 ## Final words
-![Markdown](https://res.cloudinary.com/kohan-devblog/image/upload/c_scale,w_1009/v1688069259/Posts/markdown-reader-astro-rehype-pretty-code/Screenshot_2023-06-29_at_22.07.24_ycz4aa.png)
+![Markdown](https://res.cloudinary.com/kohan-devblog/image/upload/c_scale,w_1009/v1688069259/Posts/markdown-reader-astro-rehype-pretty-code/rehype-pretty-code-4.png)
 
-Good looking markdown is a crucial element when building your own tech blog and `rehype-pretty-code` makes it super simple to implement feature rich codeblocks.
+Having a visually appealing Markdown is a crucial element when building your own tech blog, and `rehype-pretty-code` makes it super simple to implement feature-rich code blocks.
 
-Remember that there are far more features than the ones i've shown in this blogpost. You can try out other ones for yourself [visiting rehype-pretty-code website](https://rehype-pretty-code.netlify.app/)
+Remember that there are far more features available than the ones I've shown in this blog post. Feel free to explore and try out other features for yourself.
+[visiting rehype-pretty-code website](https://rehype-pretty-code.netlify.app/)
 
