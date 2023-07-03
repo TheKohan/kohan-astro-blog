@@ -1,6 +1,6 @@
 ---
-title: "Build your own styled code blocks with Astro and Rehype Pretty Code"
-description: "Build great looking codeblocks with highlighting, titles and line numbering."
+title: "Code Blocks Perfected: Astro and Rehype-pretty-code Tutorial"
+description: "Build great looking code blocks with highlighting, titles and line numbering."
 author: "Piotr Kochanowski"
 isMdx: true
 publishDate: 2023-04-18
