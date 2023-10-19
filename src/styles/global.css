@@ -135,16 +135,16 @@
     @apply leading-relaxed text-slate-900 selection:bg-kohan-200 selection:text-kohan-500 dark:text-kohan-100 dark:selection:bg-kohan-100 dark:selection:text-slate-900;
   }
   .markdown h1 {
-    @apply mt-8 mb-4 text-3xl font-extrabold;
+    @apply mb-4 mt-8 text-3xl font-extrabold;
   }
   .markdown h2 {
-    @apply mt-8 mb-4 text-2xl font-semibold;
+    @apply mb-4 mt-8 text-2xl font-semibold;
   }
   .markdown h3 {
-    @apply mt-4 mb-2 text-xl font-semibold;
+    @apply mb-2 mt-4 text-xl font-semibold;
   }
   .markdown h4 {
-    @apply mt-2 mb-1 text-base font-medium;
+    @apply mb-1 mt-2 text-base font-medium;
   }
   .markdown li {
     @apply list-disc text-slate-900 dark:text-white;
@@ -211,6 +211,7 @@
 
   .markdown pre {
     @apply mx-auto mb-3 overflow-scroll rounded  bg-slate-800 font-mono;
+    @apply scroll-smooth accent-primary scrollbar-thin scrollbar-thumb-kohan-800;
   }
 
   .markdown [data-rehype-pretty-code-fragment] {
@@ -220,7 +221,7 @@
     @apply mt-16;
   }
   .markdown [data-rehype-pretty-code-title] {
-    @apply absolute left-0 -top-8 rounded-t-md border-t-2 border-kohan-500 bg-slate-800 px-4 py-2 text-kohan-100;
+    @apply absolute -top-8 left-0 rounded-t-md border-t-2 border-kohan-500 bg-slate-800 px-4 py-2 text-kohan-100;
   }
 
   /* CODE STYLES */
