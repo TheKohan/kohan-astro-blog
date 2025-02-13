@@ -1,0 +1,61 @@
+---
+import LandingPage from "@layouts/landing-page.astro";
+---
+
+<LandingPage title="About">
+  <div class="mx-auto mb-8 max-w-2xl space-y-8">
+    <div class="rounded-2xl bg-elevation p-6 drop-shadow-lg dark:bg-slate-800">
+      <h1 class="mb-8 text-3xl font-bold text-slate-900 dark:text-kohan-500">
+        Company Information
+      </h1>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div>
+          <h2
+            class="mb-4 text-xl font-semibold text-slate-900 dark:text-kohan-500"
+          >
+            Basic Information
+          </h2>
+          <dl class="space-y-4">
+            <div>
+              <dt class="font-medium text-slate-700 dark:text-slate-300">
+                Company Name
+              </dt>
+              <dd class="ml-4">Piotr Kochanowski</dd>
+            </div>
+
+            <div>
+              <dt class="font-medium text-slate-700 dark:text-slate-300">
+                Location
+              </dt>
+              <dd class="ml-4">Wrocław, Poland</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div>
+          <h2
+            class="mb-4 text-xl font-semibold text-slate-900 dark:text-kohan-500"
+          >
+            Business Details
+          </h2>
+          <dl class="space-y-4">
+            <div>
+              <dt class="font-medium text-slate-700 dark:text-slate-300">
+                Tax ID (NIP)
+              </dt>
+              <dd class="ml-4">8961612174</dd>
+            </div>
+
+            <div>
+              <dt class="font-medium text-slate-700 dark:text-slate-300">
+                Business ID (REGON)
+              </dt>
+              <dd class="ml-4">521588398</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</LandingPage>

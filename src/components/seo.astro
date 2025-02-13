@@ -15,22 +15,22 @@ const openGraph = {
   locale: "en_US",
   image: {
     src: "assets/og_image.webp",
-    alt: "Stay up-to-date on Typescript, React, and React Native with Kohan Dev.",
+    alt: "Stay up-to-date on Typescript, React, and React Native with Piotr Kochanowski.",
   },
   twitter: "The_Kohan",
 };
 
-const siteTitle = "kohan.dev";
+const siteTitle = "Piotr Kochanowski";
 
 const pageTitle = title ?? frontmatter?.title;
 
 const config = {
   canonicalUrl: new URL(Astro.url.pathname, Astro.site),
-  title: "Kohan.Dev",
+  title: "Piotr Kochanowski",
   description:
     description ??
     frontmatter?.description ??
-    "Stay up-to-date on Typescript, React, and React Native with Kohan Dev. Your source for expert insights on the latest frontend and backend technologies.",
+    "Stay up-to-date on Typescript, React, and React Native with Piotr Kochanowski. Your source for expert insights on the latest frontend and backend technologies.",
   contentTitle: pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle,
   imageSrc: frontmatter?.image?.src ?? openGraph.image.src,
   imageUrl: new URL(openGraph.image.src, Astro.url.origin),

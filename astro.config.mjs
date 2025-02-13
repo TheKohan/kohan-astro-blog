@@ -37,7 +37,7 @@ const prettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-  site: `https://kohan.dev/`,
+  site: `https://pkochanowski.pl/`,
   markdown: {
     extendDefaultPlugins: true,
     syntaxHighlight: false,
