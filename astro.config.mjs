@@ -87,8 +87,8 @@ export default defineConfig({
         "@layouts": path.resolve("./src/layouts"),
         "@components": path.resolve("./src/components"),
         "@styles": path.resolve("./src/styles"),
-        "@models": path.resolve("./src/models")
-      }
-    }
+        "@models": path.resolve("./src/models"),
+      },
+    },
   },
 });
